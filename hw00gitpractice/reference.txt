@@ -9,4 +9,5 @@ start filename:opens file
 cat filename:reads file
 git status:check out what's up
 git add filename:marked as a “new file” and under the heading “Changes to be committed.”
-git commit -m "message":commit and msg
+git commit -m "message":commit and msg, always leave a msg
+git diff:shows differences
