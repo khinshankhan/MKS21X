@@ -2,7 +2,7 @@ git config --global user.name "Khinshan Khan":set username
 git config --global user.email kkhan@stuy.edu:set email
 git config --global core.editor emacs:set editor
 git config --list:lists out settings
-git clone git@github.com:kkhan01/reponame.git:clones locally, get from github
+git clone git@github.com:kkhan01/reponame.git:'pulls'
 mkdir directoryname/:makes directory
 touch filename.ext:makes file
 start filename:opens file
@@ -11,3 +11,4 @@ git status:check out what's up
 git add filename:marked as a “new file” and under the heading “Changes to be committed.”
 git commit -m "message":commit and msg, always leave a msg
 git diff:shows differences
+git push -u origin master:'pushes'
