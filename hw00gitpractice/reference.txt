@@ -9,6 +9,7 @@ start filename:opens file
 cat filename:reads file
 git status:check out what's up
 git diff:shows differences
-git add filename:marked as a “new file” and under the heading “Changes to be committed.”
+git add filename:marked as a â€œnew fileâ€ and under the heading â€œChanges to be committed.â€
 git commit -m "message":commit and msg, always leave a msg
 git push -u origin master:'pushes'
+git pull:pulls if the repo has already been cloned once.
