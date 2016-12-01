@@ -1,21 +1,22 @@
 public class CirculatingBook extends LibraryBook{
+    
     private String currentHolder;
     private String dueDate;
 
     public CirculatingBook(String author, String title, String ISBN, String callNumber){
 	super(author, title, ISBN, callNumber);
-	this.currentHolder="";
-	this.dueDate="";
+	currentHolder="";
+	dueDate="";
     }
     
-    public void setCurrentHolder(String currentHolder) {
-       this.currentHolder=currentHolder;
+    public void setCurrentHolder(String patron) {
+       currentHolder=patron;
     }
     public String getCurrentHolder() {
         return currentHolder;
     }
-    public void setDueDate(String dueDate) {
-       this.dueDate=dueDate;
+    public void setDueDate(String due) {
+       dueDate=due;
     }
     public String getDueDate() {
         return dueDate;
@@ -34,11 +35,10 @@ public class CirculatingBook extends LibraryBook{
 	    return "Book available on shelves";
 	}
 	else{
-	    return "Book is currently borrowed by " + currentHolder + " and is due on " + dueDate;
+	    return ("Book is currently borrowed by " + currentHolder + " and is due on " + dueDate);
 	}
     }
-    }
     public String toString(){
-	return super.toString()+"\n"+"Current Holder: "+this.currentHolder+"\n"+"Due Date : "+this.dueDate;
+	return super.toString()+"\nCurrent Holder: "+currentHolder+"\nDue Date : "+dueDate;
         }
 }

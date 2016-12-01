@@ -2,7 +2,7 @@ public class ReferenceBook extends LibraryBook{
     
     private String collection;
     
-    public Book(String author, String title, String ISBN, String callNumber, String collection){
+    public ReferenceBook(String author, String title, String ISBN, String callNumber, String collection){
 	super(author, title, ISBN, callNumber);
 	this.collection=collection;
     }
@@ -25,6 +25,6 @@ public class ReferenceBook extends LibraryBook{
 	return "";
     }
     public String toString(){
-	return super.toString()+"\n"+"Collection: "+this.collection;
+	return super.toString()+"\nCollection: "+collection;
         }
 }

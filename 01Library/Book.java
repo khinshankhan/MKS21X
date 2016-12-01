@@ -31,13 +31,11 @@ public class Book{
   }
   public Book(String author, String title, String ISBN)
   {
-      this.author=name;
+      this.author=author;
       this.title=title;
       this.ISBN=ISBN;
   }
   public String toString(){
-    return "Book has the folllowing parameters:"\n"+ "+"Author: "
-	+this.author+"\n"+"Title: "+this.title+"\n"+"ISBN #: "
-	+this.ISBN;
+    return "Book has the folllowing parameters: \nAuthor: "+author+"\nTitle: "+title+"\nISBN #: "+ISBN;
   }
 }
