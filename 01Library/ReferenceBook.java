@@ -22,6 +22,7 @@ public class ReferenceBook extends LibraryBook{
     }
     public String circulationStatus(){
 	System.out.println("Non-circulating reference book");
+	return "";
     }
     public String toString(){
 	return super.toString()+"\n"+"Collection: "+this.collection;
