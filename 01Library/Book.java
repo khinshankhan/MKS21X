@@ -1,5 +1,4 @@
-public class Book
-{
+public class Book{
   private String author;
   private String title;
   private String ISBN;
@@ -37,6 +36,8 @@ public class Book
       this.ISBN=ISBN;
   }
   public String toString(){
-    return "Book has the folllowing parameters: "+"Author: "+this.author+", "+"Title: "+this.title+", "+"ISBN #: "+this.ISBN;
+    return "Book has the folllowing parameters:"\n"+ "+"Author: "
+	+this.author+"\n"+"Title: "+this.title+"\n"+"ISBN #: "
+	+this.ISBN;
   }
 }
