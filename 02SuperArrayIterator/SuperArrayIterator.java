@@ -21,5 +21,4 @@ public class SuperArrayIterator implements Iterable<String>{
   public void remove(){
     throw new UnsupportedOperationException();
   }
-
 }
