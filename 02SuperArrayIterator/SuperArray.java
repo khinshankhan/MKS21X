@@ -1,7 +1,7 @@
 //importations
-import java.util.*; 
+import java.util.Iterator;
 //class name
-public class SuperArray{
+public class SuperArray implements Iterable<String>{
     //private variable declaration
     private String[] data;
     private int size;
@@ -202,5 +202,8 @@ public class SuperArray{
 	    return -1;
 	}	
     }
-    //
+    //iterator() method
+    public Iterator<String> iterator(){
+	return new SuperArrayIterator(this);
+    }
 }
