@@ -1,19 +1,19 @@
 //importations
 import java.util.*; 
 //class name
-public class superArray{
+public class SuperArray{
     //private variable declaration
     private String[] data;
     private int size;
     //first type of constructor, also default. needs no parameters
     //data capacity will be 10, but size will be 0
-    superArray(){
+    SuperArray(){
 	data = new String[10];
 	size = 0;
     }
     //similar to previous constructor, will make the data capacity
     //whatever maay be initialcapacity
-    public superArray(int initialCapacity){
+    public SuperArray(int initialCapacity){
 	if(initialCapacity<0){
 	    throw new IllegalArgumentException();
 	}

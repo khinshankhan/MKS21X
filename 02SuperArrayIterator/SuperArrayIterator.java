@@ -1,7 +1,7 @@
 import java.util.*;
 public class SuperArrayIterator implements Iterable<String>{
     int start,end;
-    public SuperArrayIterator(int start, int end){
+    public SuperArrayIterator(SuperArray a){
     this.start = start;
     this.end = end;
   }
