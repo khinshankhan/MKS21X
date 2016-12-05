@@ -32,6 +32,9 @@ public boolean isDone(){
 	  }
       }
     }
-    return broke;
+    return !broke;
 }
-  
+//Three
+public boolean isDone(){
+    for(int i=0, r=0, c=0;i<15; c++){
+	if(
