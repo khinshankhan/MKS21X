@@ -1,7 +1,9 @@
 //First
 public boolean isDone(){
   List<Integer> nums = new ArrayList<Integer>();
-  nums.add(1);
-  
+  for(int i=1; i<16;i++){ 
+    nums.add(i);
+  }
+}
   
   
