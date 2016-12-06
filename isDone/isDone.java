@@ -56,5 +56,15 @@ public boolean isDone(){
     }
 //Three
 public boolean isDone(){
-    for(int i=0, r=0, c=0;i<15; c++){
-	if()}}
+    int r=0;
+    for (int i = 0; i < side* side - 1; i++){
+	int c= i%side;
+        if (c == array[r].length -1){
+	    r++;
+	}
+	if(!(values[i][a] < values[i+r][a+1-c] || values[i+r][a+1-c] == 0)){
+	    return false;
+	}	    
+    }
+    return true;
+}
