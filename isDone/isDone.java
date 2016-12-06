@@ -19,7 +19,8 @@ public boolean isDone(){
 }
 
 //Second
-public boolean isDone(){
+//DIDNT COMPARE ON BOTH SIDES GRRRR
+/*public boolean isDone(){
     int num=0;
     for(int r=0; r <side; r++){
 	for(int c=0; c <side; c++){
@@ -32,8 +33,28 @@ public boolean isDone(){
       }
     }
     return true;
-}
+    }*/
+
+//REAL SECOND AFTER MUCH WORK 
+public boolean isDone(){
+	for(int i = 0; i < side; i++){
+	    for(int a = 0; a < side; j++){
+		if(!(i == side-1 && a == side-1)){
+		    int r = 0;
+		    int c = 0;
+		    if(a == side-1){
+			r = 1;
+			c = a + 1;
+		    }
+		    if(!(values[i][a] < values[i+r][a+1-c] || values[i+r][a+1-c] == 0)){
+			return false;
+		    }	    
+		}
+	    }
+	}
+	return true;
+    }
 //Three
 public boolean isDone(){
     for(int i=0, r=0, c=0;i<15; c++){
-	if(
+	if()}}
