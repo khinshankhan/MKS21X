@@ -21,18 +21,17 @@ public boolean isDone(){
 //Second
 public boolean isDone(){
     int num=0;
-    bool broke=false
-    for(int r=0; r <side&& !broke; r++){
-      for(int c=0; c <side; c++){
+    for(int r=0; r <side; r++){
+	for(int c=0; c <side; c++){
 	  if(values[r][c]!=0){
 	      if(values[r][c]!=num+1){
-		  broke=true;
-		  break;
+		  return false;
 	      }
+	      num=values[r][c];
 	  }
       }
     }
-    return !broke;
+    return true;
 }
 //Three
 public boolean isDone(){
