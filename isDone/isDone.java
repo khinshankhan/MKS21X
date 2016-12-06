@@ -62,7 +62,7 @@ public boolean isDone(){
         if (c == array[r].length -1){
 	    r++;
 	}
-	if(!(values[i][a] < values[i+r][a+1-c] || values[i+r][a+1-c] == 0)){
+if(//CONDITION){
 	    return false;
 	}	    
     }
