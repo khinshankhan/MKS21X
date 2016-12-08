@@ -35,7 +35,7 @@ public class Barcode implements Comparable<Barcode>{
   private int checkSum(){
       int sum= 0;
       for(int i= 0; i<_zip.length(); i++){
-	  sum+= (int)_zip.charAt(i);
+	  sum+= (int)_zip.charAt(i)-48;
       }
       return sum%10;
   }
@@ -77,4 +77,27 @@ public class Barcode implements Comparable<Barcode>{
       Integer p = new Integer(other._zip + other.checkSum()+"");
       return o.compareTo(p);
   }
+public static void main(String args[]){
+    Barcode b = new Barcode("08451");
+    Barcode c = new Barcode("99999");
+    Barcode d = new Barcode("01111");
+    System.out.println(b); //084518  |||:::|::|::|::|:|:|::::|||::|:|
+    System.out.println(b.toString().compareTo("084518  |||:::|::|::|::|:|:|::::|||::|:|")); //0
+    System.out.println(b.compareTo(b)); //0
+    System.out.println((new Barcode("11426")).compareTo(new Barcode("11426"))); //0
+    System.out.println(c.compareTo(b)); //some positive, preferably 1
+    System.out.println(d.compareTo(b)); //some negative, preferably -1
+    /*length
+      Barcode e = new Barcode("123456");
+      System.out.println(e);
+    */
+    /*length
+      Barcode e = new Barcode("1234");
+      System.out.println(e);
+    */
+    /*type
+      Barcode e= new Barcode("12.45");
+      System.out.println(e);
+    */
+}
 }
