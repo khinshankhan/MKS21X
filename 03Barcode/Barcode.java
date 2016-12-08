@@ -13,25 +13,68 @@ public class Barcode implements Comparable<Barcode>{
 //               _zip and _checkDigit are initialized.
   public Barcode(String zip){
       if(!(zip.length()==5)){
-	  throw new IllegalArgumentException;
+	      throw new IllegalArgumentException("zip is not the correct length");
+	  }
+      try{
+	      Integer.parseInt(zip);
+      }catch(Exception e){
+	  throw new IllegalArgumentException("zip contains only digits");
       }
+      _zip = zip;
+      _checkDigit = checkSum();
+      toString();
   }
+    
 // postcondition: Creates a copy of a bar code.
   public Barcode clone(){
       Barcode clone= new Barcode(_zip);
       return clone;
   }
 
-
 // postcondition: computes and returns the check sum for _zip
-  private int checkSum(){}
-
+  private int checkSum(){
+      int sum= 0;
+      for(int i= 0; i<_zip.length(); i++){
+	  sum+= (int)_zip.charAt(i);
+      }
+      return sum%10;
+  }
+    
 //postcondition: format zip + check digit + Barcode 
 //ex. "084518  |||:::|::|::|::|:|:|::::|||::|:|"      
-  public String toString(){}
-
+    public String toString(){
+	String barcode = _zip + _checkDigit+ "  " + "|";
+	for(int i = 0; i < (_zip + _checkDigit).length(); i++){
+	    switch((_zip + _checkDigit).charAt(i)){
+	    case '0': barcode += "||:::";
+		break;
+	    case '1': barcode += ":::||";
+		break;
+	    case '2': barcode += "::|:|";
+		break;
+	    case '3': barcode += "::||:";
+		break;
+	    case '4': barcode += ":|::|";
+		break;
+	    case '5': barcode += ":|:|:";
+		break;
+	    case '6': barcode += ":||::";
+		break;
+	    case '7': barcode += "|:::|";
+		break;
+	    case '8': barcode += "|::|:";
+		break;
+	    case '9': barcode += "|:|::";
+		break;
+	    }
+	}
+	return barcode + "|";
+    }
 
 // postcondition: compares the zip + checkdigit, in numerical order. 
-  public int compareTo(Barcode other){}
-    
+  public int compareTo(Barcode other){
+      String o = _zip + checkSum() ;
+      String p = other._zip + other.checkSum();
+      return o.compareTo(p);
+  }
 }
