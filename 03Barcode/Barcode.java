@@ -73,8 +73,8 @@ public class Barcode implements Comparable<Barcode>{
 
 // postcondition: compares the zip + checkdigit, in numerical order. 
   public int compareTo(Barcode other){
-      String o = _zip + checkSum() ;
-      String p = other._zip + other.checkSum();
+      Integer o = new Integer(_zip + checkSum()+"") ;
+      Integer p = new Integer(other._zip + other.checkSum()+"");
       return o.compareTo(p);
   }
 }
