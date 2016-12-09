@@ -23,9 +23,14 @@ public class Barcode implements Comparable<Barcode>{
 	  throw new IllegalArgumentException("zip contains only digits");
       }
       _zip = zip;
-      _checkDigit = checkSum();
       toString();
   }
+  public Barcode(String zip){
+      if(zip.length()!=5 || numString(_zip)){
+	  throw new IllegalArgumentException();
+      }
+  }
+  private boolean numString(zip){
     
 // postcondition: Creates a copy of a bar code.
   public Barcode clone(){
@@ -34,10 +39,10 @@ public class Barcode implements Comparable<Barcode>{
   }
 
 // postcondition: computes and returns the check sum for _zip
-  private static int checkSum(){
+  public static int checkSum(String zip){
       int sum= 0;
-      for(int i= 0; i<_zip.length(); i++){
-	  sum+= (int)_zip.charAt(i)-48;
+      for(int i= 0; i<zip.length(); i++){
+	  sum+= (int)(zip.charAt(i)-'0');
       }
       return sum%10;
   }
@@ -45,9 +50,9 @@ public class Barcode implements Comparable<Barcode>{
 //postcondition: format zip + check digit + Barcode 
 //ex. "084518  |||:::|::|::|::|:|:|::::|||::|:|"      
     public String toString(){
-	String barcode = _zip + _checkDigit+ "  " + "|";
-	for(int i = 0; i < (_zip + _checkDigit).length(); i++){
-	    switch((_zip + _checkDigit).charAt(i)){
+	String barcode = _zip + checkSum(_zip)+ "  " + "|";
+	for(int i = 0; i < (_zip + checkSum(_zip)).length(); i++){
+	    switch((_zip + checkSum(_zip)).charAt(i)){
 	    case '0': barcode += "||:::";
 		break;
 	    case '1': barcode += ":::||";
@@ -75,31 +80,50 @@ public class Barcode implements Comparable<Barcode>{
 
 // postcondition: compares the zip + checkdigit, in numerical order. 
   public int compareTo(Barcode other){
-      Integer o = new Integer(_zip + checkSum()+"") ;
-      Integer p = new Integer(other._zip + other.checkSum()+"");
+      Integer o = new Integer(_zip + checkSum(_zip)+"") ;
+      Integer p = new Integer(other._zip + other.checkSum(_zip)+"");
       return o.compareTo(p);
   }
+
+//Converts 5 digit zipcodes to barcodes
+//Parameters:zip - the 5 digit zip code.
+//Returns:The barcode formatted as "|||:::|::|::|::|:|:|::::|||::|:|"
+//Throws:java.lang.IllegalArgumentException - if zip is not the correct length or zip contains a non digit
+  public static String toCode(String zip){
+      if(!(zip.length()==5)){
+	      throw new IllegalArgumentException("zip is not the correct length");
+	  }
+      try{
+	      Integer.parseInt(zip);
+      }catch(Exception e){
+	  throw new IllegalArgumentException("zip contains only digits");
+      }
+      String result= "";
+      return result;
+  }
+
     public static void main(String args[]){
-	Barcode b = new Barcode("08451");
-	Barcode c = new Barcode("99999");
-	Barcode d = new Barcode("01111");
-	System.out.println(b); //084518  |||:::|::|::|::|:|:|::::|||::|:|
-	System.out.println(b.toString().compareTo("084518  |||:::|::|::|::|:|:|::::|||::|:|")); //0
-	System.out.println(b.compareTo(b)); //0
-	System.out.println((new Barcode("11426")).compareTo(new Barcode("11426"))); //0
-	System.out.println(c.compareTo(b)); //some positive, preferably 1
-	System.out.println(d.compareTo(b)); //some negative, preferably -1
-	/*length
+	try{
+	    Barcode b = new Barcode("08451");
+	    Barcode c = new Barcode("99999");
+	    Barcode d = new Barcode("01111");
+	    System.out.println(b); //084518  |||:::|::|::|::|:|:|::::|||::|:|
+	    System.out.println(b.toString().compareTo("084518  |||:::|::|::|::|:|:|::::|||::|:|")); //0
+	    System.out.println(b.compareTo(b)); //0
+	    System.out.println((new Barcode("11426")).compareTo(new Barcode("11426"))); //0
+	    System.out.println(c.compareTo(b)); //some positive, preferably 1
+	    System.out.println(d.compareTo(b)); //some negative, preferably -1
+	//length
 	  Barcode e = new Barcode("123456");
 	  System.out.println(e);
-	*/
-	/*length
-	  Barcode e = new Barcode("1234");
-	  System.out.println(e);
-	*/
-	/*type
-	  Barcode e= new Barcode("12.45");
-	  System.out.println(e);
-	*/
+	  //length
+	  Barcode f = new Barcode("1234");
+	  System.out.println(f);
+	  //type
+	  Barcode g= new Barcode("12.45");
+	  System.out.println(g);
+	}catch(Exception e){
+	    e.printStackTrace();
+	}
     }
 }
