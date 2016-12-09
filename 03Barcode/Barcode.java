@@ -5,6 +5,8 @@ public class Barcode implements Comparable<Barcode>{
 // instance variables
    private String _zip;
    private int _checkDigit;
+//array to use for conversions
+   private static String[] key = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
 
 // constructors
 //precondtion: _zip.length() = 5 and zip contains only digits.
@@ -32,7 +34,7 @@ public class Barcode implements Comparable<Barcode>{
   }
 
 // postcondition: computes and returns the check sum for _zip
-  private int checkSum(){
+  private static int checkSum(){
       int sum= 0;
       for(int i= 0; i<_zip.length(); i++){
 	  sum+= (int)_zip.charAt(i)-48;
@@ -77,27 +79,27 @@ public class Barcode implements Comparable<Barcode>{
       Integer p = new Integer(other._zip + other.checkSum()+"");
       return o.compareTo(p);
   }
-public static void main(String args[]){
-    Barcode b = new Barcode("08451");
-    Barcode c = new Barcode("99999");
-    Barcode d = new Barcode("01111");
-    System.out.println(b); //084518  |||:::|::|::|::|:|:|::::|||::|:|
-    System.out.println(b.toString().compareTo("084518  |||:::|::|::|::|:|:|::::|||::|:|")); //0
-    System.out.println(b.compareTo(b)); //0
-    System.out.println((new Barcode("11426")).compareTo(new Barcode("11426"))); //0
-    System.out.println(c.compareTo(b)); //some positive, preferably 1
-    System.out.println(d.compareTo(b)); //some negative, preferably -1
-    /*length
-      Barcode e = new Barcode("123456");
-      System.out.println(e);
-    */
-    /*length
-      Barcode e = new Barcode("1234");
-      System.out.println(e);
-    */
-    /*type
-      Barcode e= new Barcode("12.45");
-      System.out.println(e);
-    */
-}
+    public static void main(String args[]){
+	Barcode b = new Barcode("08451");
+	Barcode c = new Barcode("99999");
+	Barcode d = new Barcode("01111");
+	System.out.println(b); //084518  |||:::|::|::|::|:|:|::::|||::|:|
+	System.out.println(b.toString().compareTo("084518  |||:::|::|::|::|:|:|::::|||::|:|")); //0
+	System.out.println(b.compareTo(b)); //0
+	System.out.println((new Barcode("11426")).compareTo(new Barcode("11426"))); //0
+	System.out.println(c.compareTo(b)); //some positive, preferably 1
+	System.out.println(d.compareTo(b)); //some negative, preferably -1
+	/*length
+	  Barcode e = new Barcode("123456");
+	  System.out.println(e);
+	*/
+	/*length
+	  Barcode e = new Barcode("1234");
+	  System.out.println(e);
+	*/
+	/*type
+	  Barcode e= new Barcode("12.45");
+	  System.out.println(e);
+	*/
+    }
 }
