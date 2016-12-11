@@ -106,12 +106,29 @@ public class Barcode implements Comparable<Barcode>{
       return preBarcode+ "  " +"|"+result + "|";
   }
 
+//Splits string
+    private static List<String> getParts(String s, int portion) {
+	List<String> parts = new ArrayList<String>();
+	int l = s.length();
+	for (int i=0; i<l; i+=portion){
+	    parts.add(s.substring(i, Math.min(l, i + portion)));
+        }
+        return parts;
+    }
+//checks if a string is part of an array
+//will check if the encoded are valid
+    public static boolean valid(String[] key, String check) {
+	return Arrays.asList(key).contains(check);
+    }
+}
+
+
 //Converts a barcode to a 5 digit zip
 //Parameters:code - the barcode to convert into a zipcode
 //Returns:the 5 digit zipcode
 //Throws:java.lang.IllegalArgumentException - when:checksum is invalid; encoded ints are invalid; non-barcode characters are used;
 //length of the barcode is not 32; the left and rigthmost charcters are not '|'*/
-    public static String toZip(String code){
+    /*public static String toZip(String code){
 	if(code.charAt(0)!='|' || code.charAt(code.length()-1)!='|'){
 	    throw new IllegalArgumentException("the left or/and rigthmost charcters are not '|'");
 	}
@@ -129,11 +146,17 @@ public class Barcode implements Comparable<Barcode>{
 	else if(code.length()!=32){
 	    throw new IllegalArgumentException("length of the barcode is not 32");
 	}
-
-    }
+	String preCode =code.substring(1, code.length());
+	String zip ="";
+    }*/
 
     public static void main(String args[]){
 	Barcode b = new Barcode("08451");
+	for (String part : getParts("|||:::|::|::|::|:|:|::::|||::|:|", 5)) {
+              if(valid(key,part)){
+                System.out.println("lmao");
+            }
+        }
 	System.out.println(b); //084518  |||:::|::|::|::|:|:|::::|||::|:|
 	System.out.println(toCode("08451")); //same as above
 	System.out.println(b.toString().compareTo("084518  |||:::|::|::|::|:|:|::::|||::|:|")); //0
