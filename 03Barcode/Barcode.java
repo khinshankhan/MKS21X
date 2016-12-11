@@ -109,8 +109,27 @@ public class Barcode implements Comparable<Barcode>{
 //Converts a barcode to a 5 digit zip
 //Parameters:code - the barcode to convert into a zipcode
 //Returns:the 5 digit zipcode
-//Throws:java.lang.IllegalArgumentException - when:checksum is invalid; encoded ints are invalid; non-barcode characters are used; length of the barcode is not 32; the left and rigthmost charcters are not '|'*/
+//Throws:java.lang.IllegalArgumentException - when:checksum is invalid; encoded ints are invalid; non-barcode characters are used;
+//length of the barcode is not 32; the left and rigthmost charcters are not '|'*/
     public static String toZip(String code){
+	if(code.charAt(0)!='|' || code.charAt(code.length()-1)!='|'){
+	    throw new IllegalArgumentException("the left or/and rigthmost charcters are not '|'");
+	}
+	else if(code.length()!=32){
+	    throw new IllegalArgumentException("length of the barcode is not 32");
+	}
+	else if(for(int i=0; i<code.length; i++){
+		if(code.charAt(i)!='|' || code.charAt(i)!=':'){
+		    return false;
+		}
+		return true;
+	    }){
+	    throw new IllegalArgumentException("non-barcode characters are used")
+		}
+	else if(code.length()!=32){
+	    throw new IllegalArgumentException("length of the barcode is not 32");
+	}
+
     }
 
     public static void main(String args[]){
