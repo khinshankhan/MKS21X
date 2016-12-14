@@ -1,10 +1,13 @@
+//importations (for test cases only)
+import java.util.*;
+
 public class Sorts{
   /**EDIT THIS METHOD TO MATCH YOUR NAME 
   */
   public static String name(){
     return "09.Khan.Khinshan"; 
   }
-
+    
   /**Selection sort of an int array. 
   *Upon completion, the elements of the array will be in increasing order.
   *@param data  the elements to be sorted.
@@ -43,18 +46,36 @@ public class Sorts{
 
     
     public static void main(String[] a){
+	int[] initial  = new int[]{599, 84, 72, 1, 21};
+	int[] copy = new int[initial.length];
+	System.arraycopy( initial, 0, copy, 0, initial.length );
+	Arrays.sort(copy);
+	Object[] Sorted = {copy};
+	
 	System.out.print("\n Selection sort: ");
-	int[] selection = {599, 84, 72, 1, 21};
+	int[] selection = new int[initial.length];
+	System.arraycopy( initial, 0, selection, 0, initial.length );
 	Sorts.selectionSort(selection);
-	for(int i = 0; i < selection.length; i++){
-	    System.out.print(selection[i] + ",");
+	Object[] Selection = {selection};
+	if (Arrays.deepEquals(Sorted, Selection)){
+	    System.out.println("Sorted");
 	}
+	else{
+	    System.out.println("Not sorted");
+	}
+	
 	System.out.print("\n Bubble sort: ");
-	int[] bubble = {500, 44, 92, 1, 41};
+	int[] bubble = new int[initial.length];
+	System.arraycopy( initial, 0, bubble, 0, initial.length );
 	Sorts.bubbleSort(bubble);
-	for(int i = 0; i < bubble.length; i++){
-	    System.out.print(bubble[i] + ",");
+	Object[] Bubble = {bubble};
+	if (Arrays.deepEquals(Sorted, Bubble)){
+	    System.out.println("Sorted");
 	}
+	else{
+	    System.out.println("Not sorted");
+	}
+	
     }
 }
 	      
