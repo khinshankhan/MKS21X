@@ -26,6 +26,16 @@ public class Sorts{
 	}
     }
 
+  /**Insertion sort of an int array. 
+  *Upon completion, the elements of the array will be in increasing order.
+  *@param data  the elements to be sorted.
+  */
+    public static void linsertionSort(int[] data){
+	int select;
+	for(int i = 1; i < data.length; i++){
+	    select = data[i];
+	    for(int ind= i -1;
+
     /**Bubble sort of an int array. 
   *Upon completion, the elements of the array will be in increasing order.
   *@param data  the elements to be sorted.
