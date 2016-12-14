@@ -22,11 +22,34 @@ public class Sorts{
 	    data[min] = previous;
 	}
     }
+
+    public static void bubbleSort(int[] data){
+	int min;
+	for(int i=0; i < data.length; i++){
+	    for(int index = 1; index < (data.length-i); index++){
+		if(data[index] < data[index-1]){
+		    min = data[index-1];
+		    data[index-1] = data[index];
+		    data[index] = min;
+		}
+	    }
+	}
+    }
+
+
+    
     public static void main(String[] a){
-	int[] ary = {599, 84, 72, 1, 21};
-	Sorts.selectionSort(ary);
-	for(int i = 0; i < ary.length; i++){
-	    System.out.print(ary[i] + ",");
+	System.out.print("\n Selection sort: ");
+	int[] selection = {599, 84, 72, 1, 21};
+	Sorts.selectionSort(selection);
+	for(int i = 0; i < selection.length; i++){
+	    System.out.print(selection[i] + ",");
+	}
+	System.out.print("\n Bubble sort: ");
+	int[] bubble = {500, 44, 92, 1, 41};
+	Sorts.bubbleSort(bubble);
+	for(int i = 0; i < bubble.length; i++){
+	    System.out.print(bubble[i] + ",");
 	}
     }
 }
