@@ -17,7 +17,7 @@ public class PersonalLibrary{
 	return data;
     }
     
-//Splits string
+//Splits string and stores the parts in an arraylist
     private static List<String> getParts(String s, int portion) {
 	List<String> parts = new ArrayList<String>();
 	int l = s.length();
@@ -27,7 +27,7 @@ public class PersonalLibrary{
         return parts;
     }
     
-//checks if a string is part of an 'key' array
+//checks if a string is part of an 'key' int array
     public static boolean valid(String[] key, String check) {
 	return Arrays.asList(key).contains(check);
     }
@@ -37,6 +37,19 @@ public class PersonalLibrary{
 	int store = data[a];
 	data[a] = data[b];
 	data[b] = store;
+    }
+    
+//Check if all elements of an int array equal in value
+    public static boolean equality(int array[]){
+	boolean equalityChecker = true;
+	int equalityCheck = array[0];
+	for (int i = 0; i < array.length; i++){
+	    if (equalityCheck != array[i]){
+		equalityChecker=false;
+		break;
+	    }
+	}
+	return equalityChecker;
     }
 }
     
