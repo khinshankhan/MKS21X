@@ -30,11 +30,18 @@ public class Sorts{
   *Upon completion, the elements of the array will be in increasing order.
   *@param data  the elements to be sorted.
   */
-    public static void linsertionSort(int[] data){
+    public static void insertionSort(int[] data){
 	int select;
 	for(int i = 1; i < data.length; i++){
 	    select = data[i];
-	    for(int ind= i -1;
+	    int check= i-1;
+	    while(check >=0 && select < data[check]){
+		data[check+1]=data[check];
+		check--;
+	    }
+	    data[check+1]=select;
+	}
+    }
 
     /**Bubble sort of an int array. 
   *Upon completion, the elements of the array will be in increasing order.
@@ -80,6 +87,18 @@ public class Sorts{
 	Sorts.bubbleSort(bubble);
 	Object[] Bubble = {bubble};
 	if (Arrays.deepEquals(Sorted, Bubble)){
+	    System.out.println("Sorted");
+	}
+	else{
+	    System.out.println("Not sorted");
+	}
+
+	System.out.print("\n Insertion sort: ");
+	int[] insert = new int[initial.length];
+	System.arraycopy( initial, 0, insert, 0, initial.length );
+	Sorts.insertionSort(insert);
+	Object[] Insert = {insert};
+	if (Arrays.deepEquals(Sorted, Insert)){
 	    System.out.println("Sorted");
 	}
 	else{
