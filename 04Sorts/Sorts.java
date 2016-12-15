@@ -59,11 +59,23 @@ public class Sorts{
 	    }
 	}
     }
-
-
+    
+    /**Fills int array with random integers. 
+  *Upon completion, the elements of the array will be in a random order (max is 10000 because why not?).
+  *@param data array to fill.
+  */
+    public static int[] randomArray(int size, int max){
+	int[] data= new int[size];
+	Random num = new Random();
+	for(int i=0; i<data.length; i++){
+	    data[i]=num.nextInt(max);
+	}
+	return data;
+    }
     
     public static void main(String[] a){
-	int[] initial  = new int[]{599, 84, 72, 1, 21};
+	int[] initial  = randomArray(10,1000);
+	System.out.println("Initial Array: " +Arrays.toString(initial)); 
 	int[] copy = new int[initial.length];
 	System.arraycopy( initial, 0, copy, 0, initial.length );
 	Arrays.sort(copy);
