@@ -72,9 +72,27 @@ public class Sorts{
 	}
 	return data;
     }
+    public static String Test(String method){
+	String a= "will be sorted";
+	String b= "will be time";
+	int[] initial  = randomArray(5,1000);
+	System.out.println("Initial Array: " +Arrays.toString(initial)); 
+	int[] copy = new int[initial.length];
+	System.arraycopy( initial, 0, copy, 0, initial.length );
+	Arrays.sort(copy);
+	Object[] Sorted = {copy};
+	int[] ary = new int[initial.length];
+	System.arraycopy( initial, 0, ary, 0, initial.length );
+	switch(method){
+	    case 'insertion':Sorts.insertionSort(bubble);
+		break;
+	}
+
+	return String.format("%s: %s and took time of %s", method, a, b);;
+}
     
     public static void main(String[] a){
-	int[] initial  = randomArray(10,1000);
+	int[] initial  = randomArray(0,1000);
 	System.out.println("Initial Array: " +Arrays.toString(initial)); 
 	int[] copy = new int[initial.length];
 	System.arraycopy( initial, 0, copy, 0, initial.length );
