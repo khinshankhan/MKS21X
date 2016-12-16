@@ -47,17 +47,30 @@ public class Sorts{
   *Upon completion, the elements of the array will be in increasing order.
   *@param data  the elements to be sorted.
   */
-    public static void bubbleSort(int[] data){
-	int min;
-	for(int i=0; i < data.length; i++){
-	    for(int index = 1; index < (data.length-i); index++){
-		if(data[index] < data[index-1]){
-		    min = data[index-1];
-		    data[index-1] = data[index];
-		    data[index] = min;
+    public static void bubbleSort(int[] data) {
+	int previousSwap = data.length-1;
+	for(int i=1; i < data.length; i++){
+	    boolean ordered = true;
+	    int currentSwap = -1;
+	    for(int ind=0; ind < previousSwap; ind++){
+		if(data[ind] > data[ind+1]){
+		    swap(data, ind, ind+1);
+		    ordered = false;
+		    currentSwap = ind;
 		}
 	    }
+	    if(ordered){
+		return;
+	    }
+	    previousSwap = currentSwap;
 	}
+    }
+
+//swap two values in int array, finally using my personal library! Worth editting my bubble sort I guess...
+    public static void swap(int[] data, int a, int b) {
+	int store = data[a];
+	data[a] = data[b];
+	data[b] = store;
     }
     
     /**Fills int array with random integers. 
@@ -72,11 +85,9 @@ public class Sorts{
 	}
 	return data;
     }
-    public static String Test(String method){
-	String a= "will be sorted";
-	String b= "will be time";
-	int[] initial  = randomArray(5,1000);
-	System.out.println("Initial Array: " +Arrays.toString(initial)); 
+    public static String Test(String method, int[]initial){
+	String sorted;
+	long startTime = System.currentTimeMillis();
 	int[] copy = new int[initial.length];
 	System.arraycopy( initial, 0, copy, 0, initial.length );
 	Arrays.sort(copy);
@@ -84,56 +95,30 @@ public class Sorts{
 	int[] ary = new int[initial.length];
 	System.arraycopy( initial, 0, ary, 0, initial.length );
 	switch(method){
-	    case 'insertion':Sorts.insertionSort(bubble);
+	    case "selectionSort":Sorts.selectionSort(ary);
 		break;
+	    case "insertionSort":Sorts.insertionSort(ary);
+		break;
+	    case "bubbleSort":Sorts.bubbleSort(ary);
+		break;
+	    default: return "INVALID. CURENTLY THERE ARE ONLY:\nselectionSort, insertionSort, bubbleSort \nPlease try again.";
 	}
+	Object[] Applied = {ary};
+	if (Arrays.deepEquals(Sorted, Applied)){
+	    sorted="Did sort";
+	}
+	else{
+	    sorted="Did not sort";
+	}
+	long endTime = System.currentTimeMillis();
+	long time=endTime-startTime;
 
-	return String.format("%s: %s and took time of %s", method, a, b);;
+
+	return String.format("%s: %s and took time of %s ms", method, sorted, time);
 }
     
     public static void main(String[] a){
-	int[] initial  = randomArray(0,1000);
-	System.out.println("Initial Array: " +Arrays.toString(initial)); 
-	int[] copy = new int[initial.length];
-	System.arraycopy( initial, 0, copy, 0, initial.length );
-	Arrays.sort(copy);
-	Object[] Sorted = {copy};
-	
-	System.out.print("\n Selection sort: ");
-	int[] selection = new int[initial.length];
-	System.arraycopy( initial, 0, selection, 0, initial.length );
-	Sorts.selectionSort(selection);
-	Object[] Selection = {selection};
-	if (Arrays.deepEquals(Sorted, Selection)){
-	    System.out.println("Sorted");
-	}
-	else{
-	    System.out.println("Not sorted");
-	}
-	
-	System.out.print("\n Bubble sort: ");
-	int[] bubble = new int[initial.length];
-	System.arraycopy( initial, 0, bubble, 0, initial.length );
-	Sorts.bubbleSort(bubble);
-	Object[] Bubble = {bubble};
-	if (Arrays.deepEquals(Sorted, Bubble)){
-	    System.out.println("Sorted");
-	}
-	else{
-	    System.out.println("Not sorted");
-	}
-
-	System.out.print("\n Insertion sort: ");
-	int[] insert = new int[initial.length];
-	System.arraycopy( initial, 0, insert, 0, initial.length );
-	Sorts.insertionSort(insert);
-	Object[] Insert = {insert};
-	if (Arrays.deepEquals(Sorted, Insert)){
-	    System.out.println("Sorted");
-	}
-	else{
-	    System.out.println("Not sorted");
-	}
+	System.out.println(Test(a[0],randomArray(10000,1000)));
 	
     }
 }
