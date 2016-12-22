@@ -27,10 +27,10 @@ public class temperature extends JFrame implements ActionListener{
         output = new JTextField(15);
 	output.setEditable(false);
 	t = new JTextField(15);
-	cf = new JButton("Convert to Farenheit");
+	cf = new JButton("Convert to Fahrenheit");
 	cf.addActionListener(this);
 	cf.setActionCommand("1");
-	fc = new JButton("Convert to Celcius");
+	fc = new JButton("Convert to Celsius");
 	fc.addActionListener(this);
 	fc.setActionCommand("2");
 
